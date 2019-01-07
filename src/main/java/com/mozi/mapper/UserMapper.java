@@ -14,6 +14,8 @@ public interface UserMapper {
 
      UserSecurityEntity findByUsername(String username);
 
+     UserSecurityEntity findByUserEmail(String email);
+
      List<RoleEntity> findUserRolesByUser(UserSecurityEntity user);
 
      List<Permission> findURLbyRole(RoleEntity role);

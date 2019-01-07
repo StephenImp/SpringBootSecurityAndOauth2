@@ -18,6 +18,15 @@
 	</select>
 
 
+    <select id="findByUserEmail" resultType="com.mozi.entity.UserSecurityEntity"  parameterType="java.lang.String" >
+        SELECT
+        u_id as id ,u_password as password ,u_username as username
+        FROM
+        users
+        WHERE users.u_email = #{username}
+    </select>
+
+
     <select id="findUserRolesByUser" resultType="com.mozi.entity.RoleEntity" parameterType="com.mozi.entity.UserSecurityEntity">
         SELECT
             r_id as id,r_name as name,r_flag as flag

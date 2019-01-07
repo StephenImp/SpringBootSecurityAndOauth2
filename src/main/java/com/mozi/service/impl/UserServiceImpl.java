@@ -1,7 +1,9 @@
 package com.mozi.service.impl;
 
 import com.mozi.entity.UserSecurityEntity;
+import com.mozi.mapper.UserMapper;
 import com.mozi.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,8 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public UserSecurityEntity findByUsername(String username) {
-        return null;
+        return userMapper.findByUsername(username);
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by MOZi on 2018/11/9.
  */
@@ -23,7 +25,15 @@ public class TestController extends BaseController{
 
     @RequestMapping(value = "connect",method = RequestMethod.GET)
     @ResponseBody
-    public String testConnect() throws MoziException{
+    public String testConnect(HttpServletRequest request) throws MoziException{
+
+
+        //1.从HttpServletRequest中获取SecurityContextImpl对象
+//        SecurityContextImpl securityContextImpl = (SecurityContextImpl) request.getSession().getAttribute("SPRING_SECURITY_CONTEXT");
+//        Authentication authentication = securityContextImpl.getAuthentication();
+//
+//        System.out.println(authentication);
+
 
         System.out.println("测试切面日志打印");
 

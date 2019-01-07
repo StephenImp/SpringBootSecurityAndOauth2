@@ -4,10 +4,11 @@ import com.mozi.interceptor.TestInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-public class MVCConfig extends WebMvcConfigurerAdapter{
+public class MVCConfig extends WebMvcConfigurationSupport {
 
     /**
      *   下面我们添加一个名叫MVCConfig配置类继承WebMvcConfigurerAdapter类，

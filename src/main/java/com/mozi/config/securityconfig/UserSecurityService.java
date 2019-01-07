@@ -5,8 +5,11 @@ import com.mozi.entity.UserSecurityEntity;
 import com.mozi.mapper.UserMapper;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,9 +32,13 @@ public class UserSecurityService implements UserDetailsService
     //重写loadUserByUsername 方法获得 userdetails 类型用户
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-
         //根据用户名查找用户信息
-        UserSecurityEntity user = userMapper.findByUsername(username);
+        UserSecurityEntity user = null;
+
+
+        //账号登录
+         user = userMapper.findByUsername(username);
+
 
         if(user == null)
         {
@@ -53,6 +60,6 @@ public class UserSecurityService implements UserDetailsService
         }
 
         //返回SpringSecurity需要的用户对象
-        return new User(user.getUsername(),user.getPassword(), authorities);
+        return new User(user.getUsername()+"111",user.getPassword(), authorities);
     }
 }

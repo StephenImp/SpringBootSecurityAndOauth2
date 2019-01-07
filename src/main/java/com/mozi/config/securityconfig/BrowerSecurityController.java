@@ -82,8 +82,8 @@ public class BrowerSecurityController {
         }
 
         ResultModel resultModel = new ResultModel();
-        resultModel.setStatus(111);
-        resultModel.setMsg("访问的服务需要身份认证，请引导用户到登录页");
+        resultModel.setStatus(401);
+        resultModel.setMsg("您还未登录");
         //如果不是，返回一个json 字符串
 
         response.setContentType("application/json;charset=utf-8");

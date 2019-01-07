@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mozi.constant.CommCode;
 import com.mozi.entity.ResultModel;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -26,6 +28,11 @@ import java.io.IOException;
 public class MyAuthenticationFailHandler implements AuthenticationFailureHandler  {
 
     //public static final String RETURN_TYPE = "html"; // 登录失败时，用来判断是返回json数据还是跳转html页面
+
+    /**
+     * 日志
+     */
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ObjectMapper objectMapper;

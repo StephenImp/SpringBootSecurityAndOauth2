@@ -13,6 +13,7 @@ import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -84,7 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/", "/login","/authentication/logout").permitAll()//这些接口所有人都能访问
+                .antMatchers( "login","/authentication/logout").permitAll()//这些接口所有人都能访问
                 .anyRequest().authenticated(); // 任何请求,登录后可以访问
 
         //.antMatchers(HttpMethod.POST, "/user").hasRole("ADMIN");// 此时POST方法会需要角色权限
@@ -97,37 +98,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 开启默认登录页面
         // http.formLogin();
 
+
         //自定义登录页面
-        http.csrf().disable().//默认开启，这里先显式关闭
+        http
+                .csrf().disable().//默认开启，这里先显式关闭
                 formLogin()
-                .loginPage("/authentication/require") //表单登录页面地址 *
-                //.loginPage("/login") //表单登录页面地址
-                //.loginProcessingUrl("/authentication/require")//form表单POST请求url提交地址，默认为/login
-                .successHandler(authenticationSuccessHandler)
-                .failureHandler(authenticationFailHandler)
+                //.loginPage("/authentication/require") //没有登录就会访问这个地址
+                //.loginProcessingUrl("/user/login") //自定义登录
+                //.successHandler(authenticationSuccessHandler)
+                //.failureHandler(authenticationFailHandler)
                 .permitAll();//其他接口都需要进入登录页面
 
         /**
          * 这里是权限控制，亲测有效，但现在暂时用不到
          */
-        http.authorizeRequests()
-                .anyRequest()
-                .access("@permissionControl.hasPermission(request, authentication)");//权限控制
+//        http.authorizeRequests()
+//                .anyRequest()
+//                .access("@permissionControl.hasPermission(request, authentication)")//权限控制
+//                .and()
+//                .exceptionHandling().accessDeniedHandler(authenticationAccessDeniedHandler);//权限控制后，自定义403返回数据;
 
         http.csrf().disable().
                 logout()
-                .logoutUrl("/logout")//触发注销操作的url，默认是/logout。如果开启了CSRF保护(默认开启),那么请求必须是POST方式。
-                //.logoutSuccessUrl("/authentication/require")//注销操作发生后重定向到的url，默认为 /login?logout。
+                .logoutUrl("/logout");//触发注销操作的url，默认是/logout。如果开启了CSRF保护(默认开启),那么请求必须是POST方式。
+                //.logoutSuccessUrl("/authentication/logout")//注销操作发生后重定向到的url，默认为 /login?logout。
                 //.logoutSuccessHandler(logoutSuccessHandler)//让你指定自定义的 LogoutSuccessHandler。如果指定了,logoutSuccessUrl() 将会被忽略。
-                .invalidateHttpSession(true);//指定在注销的时候是否销毁 HttpSession 。默认为True。
+                //.invalidateHttpSession(true);//指定在注销的时候是否销毁 HttpSession 。默认为True。
                 //.addLogoutHandler(logoutHandler)//添加一个 LogoutHandler。默认情况下， SecurityContextLogoutHandler 被作为最后一个 LogoutHandler 。
                 //.deleteCookies(cookieNamesToClear)//允许指定当注销成功时要移除的cookie的名称。这是显式店家 CookieClearingLogoutHandler 的一种快捷处理方式。
-
-
-                //.and()
-                //.exceptionHandling().accessDeniedHandler(authenticationAccessDeniedHandler);//权限控制后，自定义403返回数据
-
-
     }
 
 

@@ -1,5 +1,6 @@
 package com.mozi.entity;
 
+import com.mozi.annotation.ExcelTitle;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,6 +20,7 @@ public class UserSecurityEntity implements Serializable,UserDetails
     private Long id;
     private String username;
     private String password;
+    private String email;
 
 
     private List<RoleEntity> roles;
@@ -37,11 +39,13 @@ public class UserSecurityEntity implements Serializable,UserDetails
     }
 
     @Override
+    @ExcelTitle(value = "密码",order = 3)
     public String getPassword() {
         return password;
     }
 
     @Override
+    @ExcelTitle(value = "账号",order = 2)
     public String getUsername() {
         return username;
     }
@@ -74,6 +78,7 @@ public class UserSecurityEntity implements Serializable,UserDetails
         this.roles = roles;
     }
 
+    @ExcelTitle(value = "序号",order = 1)
     public Long getId() {
         return id;
     }
@@ -88,5 +93,13 @@ public class UserSecurityEntity implements Serializable,UserDetails
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
