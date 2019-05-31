@@ -1,0 +1,7 @@
+2019-01-07 11:11:20,734 INFO (StartupInfoLogger.java:59)- Started AttendanceSystemApplication in 4.32 seconds (JVM running for 5.099)
+2019-01-07 11:12:50,536 DEBUG (BaseJdbcLogger.java:181)- ==>  Preparing: SELECT u_id as id ,u_password as password ,u_username as username FROM users WHERE users.u_username = ? 
+2019-01-07 11:12:50,780 DEBUG (BaseJdbcLogger.java:181)- ==> Parameters: wpw(String)
+2019-01-07 11:12:50,986 DEBUG (BaseJdbcLogger.java:181)- <==      Total: 1
+2019-01-07 11:12:54,585 DEBUG (BaseJdbcLogger.java:181)- ==>  Preparing: SELECT r_id as id,r_name as name,r_flag as flag FROM roles WHERE u_id = ? 
+2019-01-07 11:12:54,587 DEBUG (BaseJdbcLogger.java:181)- ==> Parameters: 1(Long)
+2019-01-07 11:12:54,617 DEBUG (BaseJdbcLogger.java:181)- <==      Total: 3

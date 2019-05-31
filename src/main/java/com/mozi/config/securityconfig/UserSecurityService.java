@@ -60,6 +60,6 @@ public class UserSecurityService implements UserDetailsService
         }
 
         //返回SpringSecurity需要的用户对象
-        return new User(user.getUsername()+"111",user.getPassword(), authorities);
+        return new User(user.getUsername(),user.getPassword(), authorities);
     }
 }

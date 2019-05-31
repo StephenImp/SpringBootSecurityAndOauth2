@@ -1,0 +1,7 @@
+2019-01-07 11:07:19,863 INFO (StartupInfoLogger.java:50)- Starting AttendanceSystemApplication on DESKTOP-UKK6AN3 with PID 63396 (D:\workspace\Mozi\attendance-system\target\classes started by MOZi in D:\workspace\Mozi\attendance-system)
+2019-01-07 11:07:19,917 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.0.RELEASE, Spring v5.1.2.RELEASE
+2019-01-07 11:07:19,919 INFO (SpringApplication.java:679)- The following profiles are active: prod
+2019-01-07 11:07:23,887 INFO (StartupInfoLogger.java:59)- Started AttendanceSystemApplication in 5.374 seconds (JVM running for 6.431)
+2019-01-07 11:09:26,512 INFO (StartupInfoLogger.java:50)- Starting AttendanceSystemApplication on DESKTOP-UKK6AN3 with PID 37100 (D:\workspace\Mozi\attendance-system\target\classes started by MOZi in D:\workspace\Mozi\attendance-system)
+2019-01-07 11:09:26,516 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.0.RELEASE, Spring v5.1.2.RELEASE
+2019-01-07 11:09:26,517 INFO (SpringApplication.java:679)- The following profiles are active: prod
